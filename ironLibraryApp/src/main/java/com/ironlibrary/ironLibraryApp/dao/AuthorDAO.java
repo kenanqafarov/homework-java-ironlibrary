@@ -34,7 +34,7 @@ public class AuthorDAO {
     }
 
 
-//    Finding Author by 'isbn'
+//
     public Author findByBookIsbn(String isbn) {
         String sql = "SELECT a.*, b.* FROM author a JOIN book b ON a.book_isbn = b.isbn WHERE a.book_isbn = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -65,8 +65,9 @@ public class AuthorDAO {
         return null;
     }
 
-
-//  Finding author by their name
+    /**
+     * Finds author by name (for search by author).
+     */
     public Author findByName(String name) {
         String sql = "SELECT a.*, b.* FROM author a JOIN book b ON a.book_isbn = b.isbn WHERE a.name LIKE ?";
         try (Connection conn = DatabaseConnection.getConnection();
